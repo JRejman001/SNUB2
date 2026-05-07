@@ -1,18 +1,18 @@
-clc;
-clear;
+Y = [
+    0 1;
+    1 0;
+    0 0
+];
 
-numFeatures = 200;
-numClasses = 13;
+Yhat = [
+    0.1 0.8;
+    0.8 0.1;
+    0.1 0.1
+];
 
-layerSizes = [numFeatures, 64, 32, numClasses];
+model.numLayers = 1;
+model.W{1} = randn(3, 3);
 
-model = initializeNetwork(layerSizes);
+loss = computeLoss(Yhat, Y, model, 1e-4);
 
-disp(size(model.W{1}));
-disp(size(model.b{1}));
-
-disp(size(model.W{2}));
-disp(size(model.b{2}));
-
-disp(size(model.W{3}));
-disp(size(model.b{3}));
+disp(loss);
