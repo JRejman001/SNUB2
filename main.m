@@ -2,7 +2,7 @@ clc;
 clear;
 
 numFeatures = 200;
-numClasses = 2;
+numClasses = 13;
 
 layerSizes = [numFeatures, 64, 32, numClasses];
 
