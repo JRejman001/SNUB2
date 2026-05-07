@@ -24,7 +24,7 @@ Y_One_Hot = zeros(K, N);
 
 for i = 1:N
     classIndex = find(classes == Y(i));
-    Y_One_Hot(classIndex, i) = 1;
+    Y_One_Hot(classIndex, i) = 1; %Jedynka ustawiana jest dla klasy do której przynależy dana próbka
 end
 %% Z-score
 
@@ -33,8 +33,8 @@ sigma = std(X);
 
 sigma(sigma == 0) = 1;
 
-X = (X - mu) ./ sigma;
+X = (X - mu) ./ sigma; %Normalizacja danych metodą Z-score
 %% Mieszanie danych
-idx = randperm(size(X,1));
+idx = randperm(size(X,1)); %Mieszanie danych losowe w celu zapewnienia równomiernego podziału zbiorów
 X = X(idx,:);
 Y_One_Hot = Y_One_Hot(:,idx);
