@@ -33,7 +33,8 @@ numFeatures = size(R,1);
 
 featuresToDelete = false(1,numFeatures);
 
-for i = 1:numFeatures
+for i = 1:numFeatures %Pętla przechodząca po macierzy korelacji znajdująca cechy skorelowane ze sobą bardziej niż 0.95
+    %Takie cechy są praktycznie takie same, więc jedna z nich jest usuwana.
 
     for j = i+1:numFeatures
 
@@ -60,7 +61,7 @@ for i = 1:size(X,2)
 
     med = median(col,'omitnan');
 
-    col(isnan(col)) = med;
+    col(isnan(col)) = med; %Znajduje dane NaN i zamienia je na mediane
 
     X(:,i) = col;
 end
