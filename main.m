@@ -16,16 +16,12 @@
 % for i = 1:numSamples
 %     Y(labels(i), i) = 1;
 % end
-
 preprocess;
 analizeMissingData;
 removeRedundantFeatures;
+params.minData = 3;
 normalizeData;
 splitData;
-
-%% =========================
-%  PODZIAŁ DANYCH
-% =========================
 
 dataset.numFeatures = size(dataset.Xtest, 1);
 dataset.numClasses = size(Y_One_Hot, 1);
@@ -48,7 +44,7 @@ model = initializeNetwork(layerSizes);
 % =========================
 
 params.alpha = 0.01;
-params.dropoutRate = 0.2;
+params.dropoutRate = 0.3;
 
 params.learningRate = 1e-3;
 params.beta1 = 0.9;
@@ -58,7 +54,7 @@ params.weightDecay = 1e-4;
 
 params.batchSize = 32;
 params.numEpochs = 100;
-params.patience = 15;
+params.patience = 10;
 
 %% =========================
 %  TRENING

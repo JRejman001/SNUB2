@@ -32,11 +32,47 @@ function metrics = evaluateModel(model, X, Y, params)
 
     end
 
+    disp('Confusion matrix:');
+    disp(C);
+
     metrics.accuracy = accuracy;
     metrics.confusionMatrix = C;
 
-    fprintf('Accuracy: %.2f%%\n', accuracy * 100);
-    disp('Confusion matrix:');
-    disp(C);
+    fprintf('Accuracy: %.2f%%\n', accuracy * 100);    
+    
+    figure;
+    imagesc(C);
+    colorbar;
+    title('Confusion Matrix');
+    xlabel('Predicted Class');
+    ylabel('True Class');
+    axis equal tight;
+
+    for i = 1:numClasses
+        TP = C(i,i);
+        FP = sum(C(:,i)) - TP;
+        FN = sum(C(i,:)) - TP;
+        TN = sum(C(:)) - TP - FP - FN;
+        
+        specificity = TN / (TN + FP);
+        sensitivity = TP / (TP + FN);
+        
+        metrics.specificity(i) = specificity;
+        metrics.sensitivity(i) = sensitivity;
+    end
+
+    figure;
+    subplot(1,2,1);
+    bar(metrics.specificity);
+    title('Specificity per Class');
+    xlabel('Class');
+    ylabel('Specificity');
+    
+    subplot(1,2,2);
+    bar(metrics.sensitivity);
+    title('Sensitivity per Class');
+    xlabel('Class');
+    ylabel('Sensitivity');
+
 
 end
