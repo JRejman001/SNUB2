@@ -1,16 +1,23 @@
-N = size(X,1);
+cv1 = cvpartition(Y,'HoldOut',0.15);
+idxTrainVal = training(cv1);
+idxTest     = test(cv1);
+YtrainVal = Y(idxTrainVal);
 
-trainEnd = round(0.8 * N); %Podział danych w formule 80:10:10
-valEnd   = round(0.9 * N);
+cv2 = cvpartition(YtrainVal,'HoldOut',0.1765);
+trainValIndices = find(idxTrainVal);
 
-Xtrain = X(1:trainEnd,:);
-Ytrain = Y_One_Hot(:,1:trainEnd);
+idxTrain = trainValIndices(training(cv2));
 
-Xval = X(trainEnd+1:valEnd,:);
-Yval = Y_One_Hot(:,trainEnd+1:valEnd);
+idxVal = trainValIndices(test(cv2));
 
-Xtest = X(valEnd+1:end,:);
-Ytest = Y_One_Hot(:,valEnd+1:end);
+Xtrain = X(idxTrain,:);
+Ytrain = Y_One_Hot(:,idxTrain);
+
+Xval = X(idxVal,:);
+Yval = Y_One_Hot(:,idxVal);
+
+Xtest = X(idxTest,:);
+Ytest = Y_One_Hot(:,idxTest);
 
 %%Transpozycja żeby sample były w kolumnach a cechy w rzędach
 dataset.Xtrain = Xtrain';

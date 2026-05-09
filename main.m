@@ -19,7 +19,7 @@
 preprocess;
 analizeMissingData;
 removeRedundantFeatures;
-params.minData = 3;
+params.minData = 5;
 normalizeData;
 splitData;
 
