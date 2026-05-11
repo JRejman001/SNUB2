@@ -2,7 +2,7 @@ clc;
 clear;
 close all;
 %Ścierzka do pliku
-filename = 'C:\Users\julia\OneDrive\Pulpit\Studia\Studia sem.6\SNUB\SNB_26L_projekt_dane\SNB_26L_projekt_dane\Arrhythmia_MLR\arrhythmia.data';
+filename = '/Users/filipkowalczyk/Library/Mobile Documents/com~apple~CloudDocs/Documents/Studia/Semestr 6/SNB/Arrhythmia_MLR/arrhythmia.data';
 
 % Otwórz plik
 fid = fopen(filename,'r');
