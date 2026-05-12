@@ -66,13 +66,13 @@ params.patience = 10;
 %  EWALUACJA
 % =========================
 
-fprintf('\nTRAIN SET:\n');
+fprintf('\n ZESTAW TRENINGOWY:\n');
 trainMetrics = evaluateModel(model, dataset.Xtrain, dataset.Ytrain, params);
 
-fprintf('\nVALIDATION SET:\n');
+fprintf('\nZESTAW WALIDUJĄCY:\n');
 valMetrics = evaluateModel(model, dataset.Xval, dataset.Yval, params);
 
-fprintf('\nTEST SET:\n');
+fprintf('\nZESTAW TESTOWY:\n');
 testMetrics = evaluateModel(model, dataset.Xtest, dataset.Ytest, params);
 
 %% =========================
@@ -85,8 +85,8 @@ plot(history.trainLoss, 'LineWidth', 1.5);
 hold on;
 plot(history.valLoss, 'LineWidth', 1.5);
 
-legend('Train loss', 'Validation loss');
-xlabel('Epoch');
-ylabel('Loss');
-title('Training history');
+legend('Błąd treningowy', 'Błąd walidacyjny');
+xlabel('Epoka');
+ylabel('Wartość funkcji straty');
+title('Przebieg procesu uczenia sieci');
 grid on;
