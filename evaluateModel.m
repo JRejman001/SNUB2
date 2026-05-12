@@ -32,20 +32,20 @@ function metrics = evaluateModel(model, X, Y, params)
 
     end
 
-    disp('Confusion matrix:');
+    disp('Macierz pomyłek:');
     disp(C);
 
     metrics.accuracy = accuracy;
     metrics.confusionMatrix = C;
 
-    fprintf('Accuracy: %.2f%%\n', accuracy * 100);    
+    fprintf('Dokładność klasyfikacji: %.2f%%\n', accuracy * 100);    
     
     figure;
     imagesc(C);
     colorbar;
-    title('Confusion Matrix');
-    xlabel('Predicted Class');
-    ylabel('True Class');
+    title('Macierz pomyłek');
+    xlabel('Klasa przewidziana');
+    ylabel('Klasa rzeczywista');
     axis equal tight;
 
     for i = 1:numClasses
@@ -64,15 +64,14 @@ function metrics = evaluateModel(model, X, Y, params)
     figure;
     subplot(1,2,1);
     bar(metrics.specificity);
-    title('Specificity per Class');
-    xlabel('Class');
-    ylabel('Specificity');
+    title('Specyficzność dla poszczególnych klas');
+    xlabel('Klasa');
+    ylabel('Specyficzność');
     
     subplot(1,2,2);
     bar(metrics.sensitivity);
-    title('Sensitivity per Class');
-    xlabel('Class');
-    ylabel('Sensitivity');
-
+    title('Czułość dla poszczególnych klas');
+    xlabel('Klasa');
+    ylabel('Czułość');
 
 end
