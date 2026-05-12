@@ -1,21 +1,3 @@
-
-%% =========================
-% DANE TESTOWE
-% =========================
-
-% numFeatures = 100;
-% numClasses = 13;
-% numSamples = 300;
-% 
-% X = randn(numFeatures, numSamples);
-% 
-% labels = randi(numClasses, 1, numSamples);
-% 
-% Y = zeros(numClasses, numSamples);
-% 
-% for i = 1:numSamples
-%     Y(labels(i), i) = 1;
-% end
 preprocess;
 analizeMissingData;
 removeRedundantFeatures;

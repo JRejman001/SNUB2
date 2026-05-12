@@ -23,14 +23,24 @@ for i = 1:length(class_to_delete)
     Y(idx_to_delete) = []; % Usunięcie próbek z klasami poniżej minData
     X(idx_to_delete, :) = []; % Usunięcie odpowiadających próbek z macierzy X
 end
-% Update classes and counts after deletion
+
 classes = unique(Y);
 counts = zeros(length(classes), 1);
 
 for i = 1:length(classes)
     counts(i) = sum(Y == classes(i));
 end
-
+%KOD TESTOWY
+% idx = find(Y == 1);
+% idx = idx(1:round(end/2));
+% Y(idx) = []; % Usunięcie próbek z klasami poniżej minData
+% X(idx, :) = []; % Usunięcie odpowiadających próbek z macierzy X
+%KOD TESTOWY
+classes = unique(Y);
+counts = zeros(length(classes), 1);
+for i = 1:length(classes)
+    counts(i) = sum(Y == classes(i));
+end
 figure;
 bar(classes, counts);
 title('Rozkład klas arytmii, po usunięciu klas');
